@@ -1,0 +1,67 @@
+  <div id="gtco-features">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 gtco-heading">
+          <div class="p-15">
+          <h2>List Your Business</h2>
+          <div class="row">
+              <div class="col-sm-3">
+                <div class="feat-c-box">
+                  <ul>
+                    <li><a href="list-your-business-user-profile">User Profile</a></li>
+                    <li><a href="list-your-business-basic-information">Basic Information</a></li>
+                    <li><a href="list-your-business-description">Business Description</a></li>
+                    <li><a href="list-your-business-additional-details">Additional Details</a></li>
+                    <li><a href="list-your-business-additional-details-uploads">Uploads</a></li>
+                    <li><a class="active-page" href="list-your-business-package-details">Package Details</a></li>
+                    <li><a href="list-your-business-additional-services">Additional Services</a></li>
+                    <li><a href="list-your-business-payment">Payment</a></li>
+                    <li><a href="list-your-business-preview">Preview</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-sm-9 r-bgc">
+                <div class="form-c-box">
+                  <div class="col-md-12 padd0">  
+<?php
+	if( isset($packages) ){
+		foreach( $packages as $package ){
+?>
+                    <div class="col-sm-3 ">
+                      <div class="pack-box">
+		        <h3><?php echo $package['name'];?></h3>
+			<p><?php if( $user_package[0]['package_id'] == $package['id'] && $sell_business_details[0]['form_id'] == $user_package[0]['form_id'] ){ ?>Current <?php } ?></p>
+			<p><?php echo $package['description'];?></p>
+<?php
+			if( $user_package[0]['package_id'] == $package['id'] && $sell_business_details[0]['form_id'] == $user_package[0]['form_id'] ){
+?>
+			 <button class="active-pack" onClick="setUserSellBusinessPackage('<?php echo $user_package[0]['form_id'];?>', '<?php echo $package['id'];?>')">Active Package</button>
+<?php
+			}else{
+?>
+	                 <button onClick="setUserSellBusinessPackage('<?php echo $user_package[0]['form_id'];?>', '<?php echo $package['id'];?>')">Upgrade</button>
+<?php
+			}
+?>
+                      </div>
+                    </div>
+<?php
+		}
+	}
+?>
+		  <div class="col-sm-4"></div>
+                  <div class="col-sm-3"></div>
+                  <div class="col-sm-5" style="padding-right:0">
+                  <button type="submit" class="savebtn">Skip</button>
+                    <input type="hidden" name="frm_submit" value="sb_pa" />
+                    <button type="submit" class="savebtn">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>    
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--end section-->
